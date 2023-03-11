@@ -1,0 +1,36 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap);
+
+button {
+    font-family: 'Roboto Slab', serif;
+    font-size: large;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border-style: none;
+    color: black;
+    cursor: pointer;
+}
+
+button.danger {
+    background-color: #D9333F;
+    color: white;
+}
+
+button.success {
+    background-color: #75BA39;
+    color: black;
+}
+
+button.attention {
+    background-color: #F0E639;
+    color: black;
+}
+
+button.primary {
+    background-color: #1EC2E2;
+    color: white;
+}
+
+body {
+    /* background: linear-gradient(90deg, rgba(255,255,255,1) 30%, rgba(247,238,255,1) 100%); */
+    background-color: white;
+}

@@ -1,0 +1,39 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+}
+
+.cell {
+    width: 90px;
+    height: 90px;
+    background-color: white;
+    border-style: solid;
+    border-color: #D9D9D9;
+    border-width: 1px;
+    cursor: pointer;
+}
+
+.cell-img {
+    width: 90px;
+    height: 90px;
+}
+
+.field {
+    margin: 20px;
+    background-color: white;
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 0px 6px 0px rgba(0, 124, 219, 0.17);
+    -moz-box-shadow: 0px 0px 6px 0px rgba(0, 124, 219, 0.17);
+    box-shadow: 0px 0px 6px 0px rgba(0, 124, 219, 0.17);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.winner-text {
+    font-weight: 400;
+    font-size: 25px
+}
