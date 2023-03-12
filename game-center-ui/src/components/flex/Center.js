@@ -1,6 +1,6 @@
-const Center = ({ children }) => {
+const Center = ({ style, children }) => {
     return (
-        <div style={{display: 'flex', justifyContent: 'center'}}>
+        <div style={{...{display: 'flex', justifyContent: 'center'}, ...style}}>
             {children}
         </div>
     )

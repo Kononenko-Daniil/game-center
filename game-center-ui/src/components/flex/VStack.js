@@ -1,6 +1,6 @@
-const VStack = ({children}) => {
+const VStack = ({ style, children }) => {
     return (
-        <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+        <div style={{...{display: 'flex', flexDirection: 'column', alignItems: 'center'}, ...style}}>
             {children}
         </div>
     )

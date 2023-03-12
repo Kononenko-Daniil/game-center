@@ -4,9 +4,7 @@ const Spacer = (props) => {
     } = props;
 
     return (
-        <div style={{
-            height: height
-        }} />
+        <div style={{ height: height }} />
     )
 }
 

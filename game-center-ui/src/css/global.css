@@ -17,7 +17,7 @@ button.danger {
 
 button.success {
     background-color: #75BA39;
-    color: black;
+    color: white;
 }
 
 button.attention {
@@ -31,6 +31,5 @@ button.primary {
 }
 
 body {
-    /* background: linear-gradient(90deg, rgba(255,255,255,1) 30%, rgba(247,238,255,1) 100%); */
     background-color: white;
 }

@@ -4,16 +4,24 @@ import crossImg from '../../../shared/cross.png';
 import circleImg from '../../../shared/circle.png';
 import Center from "../../../components/flex/Center";
 import VStack from "../../../components/flex/VStack";
+import HStack from "../../../components/flex/HStack";
 import '../../../css/global.css';
+import { API_URL } from '../../../env.js';
+import { useKeycloak } from "@react-keycloak/web";
 
-const TicTacToe = () => {
-    const USER = 1;
-    const ENEMY = 2;
-    const NOBODY = -1;
+const USER = 1;
+const ENEMY = 2;
+const NOBODY = -1;
+const LONGEST_RESULT = 1000000000;
 
+const TicTacToe = (publishResult, publishingError) => {
+    const { keycloak } = useKeycloak();
     const [field, setField] = useState([[0, 0, 0], [0, 0, 0], [0, 0, 0]]);
-    const [isUserMove, setIsUserMove] = useState(true);
+    const [isUserMove, setIsUserMove] = useState(false);
+    const [isGame, setIsGame] = useState(false);
     const [winner, setWinner] = useState(0);
+    const [currentResult, setCurrentResult] = useState(LONGEST_RESULT);
+    const [startTime, setStartTime] = useState();
 
     const setEmptyField = () => {
         const emptyField = [];
@@ -24,10 +32,20 @@ const TicTacToe = () => {
         setField([...emptyField]);
     }
 
-    const handleRepeatClick = (e) => {
+    const handleStart = () => {
         setEmptyField();
         setIsUserMove(true);
         setWinner(0);
+        setCurrentResult(LONGEST_RESULT);
+        setStartTime(Date.now());
+        setIsGame(true);
+    }
+
+    const handleStop = () => {
+        setIsUserMove(false);
+        setIsGame(false);
+        setEmptyField();
+        setCurrentResult(LONGEST_RESULT);
     }
 
     const showWinner = () => {
@@ -55,8 +73,30 @@ const TicTacToe = () => {
         return (
             <Center>
                 <VStack>
-                    <h1 className="winner-text">{message}</h1>
-                    <button className="primary" onClick={handleRepeatClick}>Играть снова</button>
+                    <h1 className="winner-text">
+                        {message} 
+                        {winner==USER ? <span><br/>Твой результат - {currentResult}</span> : <></>}
+                    </h1>
+                    {
+                        winner == USER ?
+                        <div style={{marginBottom: "10px"}}>
+                            <button 
+                                className={publishingError ? "danger" : "success"} 
+                                onClick={()=>publishResult(currentResult)}>
+                                {
+                                    keycloak.authenticated ?
+                                        !publishingError ?
+                                            "Опубликовать результат"
+                                        :
+                                            "Произошла ошибка"
+                                    :
+                                        "Вы не авторизованы"
+                                }   
+                            </button>
+                        </div>
+                        : <></>
+                    }
+                    <button className="primary" onClick={handleStart}>Играть снова</button>
                 </VStack>
             </Center>
         )
@@ -65,6 +105,7 @@ const TicTacToe = () => {
     const registerWin = (playerCode) => {
         setIsUserMove(false);
         setWinner(playerCode);
+        setCurrentResult(Date.now()-startTime);
     }
 
     const checkWinStatus = (playerCode) => {
@@ -198,6 +239,7 @@ const TicTacToe = () => {
 
     return (
         <>
+            
             <div className="field">
                 {
                     field.map((row, rowIndex) => 
@@ -217,6 +259,19 @@ const TicTacToe = () => {
                 }
             </div>
             {showWinner()}
+            {
+                isGame ?
+                
+                    (winner == 0) ?
+                        <HStack>
+                            <button onClick={handleStart} style={{marginRight: "5px"}}>Заново</button>
+                            <button onClick={handleStop} className="danger">Закончить игру</button>
+                        </HStack>
+                    :
+                        <></>
+                :
+                <button onClick={handleStart} className="success">Начать игру</button>
+            }
             
         </>
     )

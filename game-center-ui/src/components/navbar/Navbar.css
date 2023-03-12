@@ -6,6 +6,7 @@
     display: block;
 }
 .navbar {
+    background-color: white;
     padding: 5px;
     position:fixed;
     top:0;
@@ -13,9 +14,6 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    /* border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: rgb(217, 217, 217); */
     margin-right: 10px;
 }
 .navbar-nav {
@@ -23,6 +21,17 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.navbar-nav-right {
+    width: 100%;
+    margin-left: 2%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.navbar-button {
+    margin: 5px 15px 0px 0px;
 }
 .navbar-nav-item {
     font-family: 'Roboto Slab', serif;
