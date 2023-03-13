@@ -28,6 +28,7 @@ namespace game_center_api.Controllers
             return results;
         }
 
+        [Authorize]
         [HttpGet("get-user-results")]
         public IEnumerable<Result> GetUserResults(string userId)
         {
@@ -59,49 +60,43 @@ namespace game_center_api.Controllers
         [HttpPost("post-result")]
         public ActionResult PostResult([FromBody]ResultDto result)
         {
-            try
+            Result _result = new Result
             {
-                Result _result = new Result
-                {
-                    UserId = User.Claims.FirstOrDefault(u => u.Type == "sid").Value,
-                    UserFirstName = User.Claims.ToList()[20].Value,
-                    UserSecondName = User.Claims.ToList()[21].Value,
-                    GameId = result.GameId,
-                    ResultValue = result.ResultValue
-                };
+                UserId = User.Claims.ToList()[6].Value,
+                UserFirstName = User.Claims.ToList()[20].Value,
+                UserSecondName = User.Claims.ToList()[21].Value,
+                GameId = result.GameId,
+                ResultValue = result.ResultValue
+            };
 
-                var existingResult = dbcontext.Results
-                    .FirstOrDefault(o => o.UserId == _result.UserId && o.GameId == _result.GameId);
+            var existingResult = dbcontext.Results
+                .FirstOrDefault(o => o.UserId == _result.UserId && o.GameId == _result.GameId);
 
-                if (existingResult != null)
+            if (existingResult != null)
+            {
+                if (result.ResultDescending)
                 {
-                    if (result.ResultDescending)
+                    if (existingResult.ResultValue < _result.ResultValue)
                     {
-                        if (existingResult.ResultValue < _result.ResultValue)
-                        {
-                            existingResult.ResultValue = _result.ResultValue;
-                        }
-                    }
-                    else
-                    {
-                        if (existingResult.ResultValue > _result.ResultValue)
-                        {
-                            existingResult.ResultValue = _result.ResultValue;
-                        }
+                        existingResult.ResultValue = _result.ResultValue;
                     }
                 }
                 else
                 {
-                    dbcontext.Results.Add(_result);
+                    if (existingResult.ResultValue > _result.ResultValue)
+                    {
+                        existingResult.ResultValue = _result.ResultValue;
+                    }
                 }
-
-                dbcontext.SaveChanges();
-
-                return Ok();
-            } catch (Exception e)
-            {
-                return BadRequest();
             }
+            else
+            {
+                dbcontext.Results.Add(_result);
+            }
+
+            dbcontext.SaveChanges();
+
+            return Ok();
         }
     }
 }

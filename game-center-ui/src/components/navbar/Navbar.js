@@ -56,7 +56,7 @@ const Navbar = () => {
                         :
                         <>
                             <button 
-                                onClick={() => keycloak.register()} 
+                                onClick={() => {window.location.href = '/users/me';}} 
                                 className="navbar-button">
                                     Аккаунт
                             </button>

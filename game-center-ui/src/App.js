@@ -6,6 +6,8 @@ import HomePage from "./pages/home/HomePage";
 import './css/global.css'
 import { ReactKeycloakProvider } from "@react-keycloak/web";
 import keycloak from "./keycloak";
+import AccountPage from "./pages/account/AccountPage";
+import PrivateRoute from "./helpers/PrivateRoute";
 
 
 const App = () => {
@@ -20,6 +22,15 @@ const App = () => {
                         <Route path="games">
                             <Route index element={<GamesPage />} />
                             <Route path=":gid" element={<GameDetailPage />} />
+                        </Route>
+                        <Route path="users">
+                            <Route 
+                                path="me" 
+                                element={
+                                    <PrivateRoute>
+                                        <AccountPage />
+                                    </PrivateRoute>
+                                } />
                         </Route>
                     </Route>
                 </Routes>

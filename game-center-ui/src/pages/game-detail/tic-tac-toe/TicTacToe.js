@@ -6,7 +6,6 @@ import Center from "../../../components/flex/Center";
 import VStack from "../../../components/flex/VStack";
 import HStack from "../../../components/flex/HStack";
 import '../../../css/global.css';
-import { API_URL } from '../../../env.js';
 import { useKeycloak } from "@react-keycloak/web";
 
 const USER = 1;
@@ -14,7 +13,7 @@ const ENEMY = 2;
 const NOBODY = -1;
 const LONGEST_RESULT = 1000000000;
 
-const TicTacToe = (publishResult, publishingError) => {
+const TicTacToe = (publishResult, publishingError, setPublishingError) => {
     const { keycloak } = useKeycloak();
     const [field, setField] = useState([[0, 0, 0], [0, 0, 0], [0, 0, 0]]);
     const [isUserMove, setIsUserMove] = useState(false);
@@ -39,6 +38,7 @@ const TicTacToe = (publishResult, publishingError) => {
         setCurrentResult(LONGEST_RESULT);
         setStartTime(Date.now());
         setIsGame(true);
+        setPublishingError(null);
     }
 
     const handleStop = () => {

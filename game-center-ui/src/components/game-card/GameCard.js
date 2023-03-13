@@ -6,7 +6,7 @@ const GameCard = (props) => {
     } = props;
 
     return (
-        <div className="card">
+        <div className="game-card">
             <img src={game.image} className={'card-image'} />
             <h1 style={{fontSize: "25px"}}>
                 <a 

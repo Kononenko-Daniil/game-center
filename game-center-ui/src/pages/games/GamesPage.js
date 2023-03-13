@@ -10,10 +10,10 @@ const GamesPage = () => {
         <Center>
             <VStack>
                 <h1 className='heading'>ИГРЫ</h1>
-                <HStack>
+                <HStack style={{justifyContent: 'center'}}>
                     {
                         games.map((game, index) => 
-                            <GameCard game={game} />
+                            <GameCard key={index} game={game} />
                         )
                     }
                 </HStack>

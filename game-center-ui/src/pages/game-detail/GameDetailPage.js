@@ -64,7 +64,7 @@ const GameDetailPage = () => {
                                 Разработчик: <a className='developer-link' href={`${game.developer}`}>{game.developer}</a>
                             </span>
 
-                            {game.component(publishResult, publishingError, getResults)}
+                            {game.component(publishResult, publishingError, setPublishingError)}
 
                             <Rating results={results} getResults={getResults} />
                         </VStack>
