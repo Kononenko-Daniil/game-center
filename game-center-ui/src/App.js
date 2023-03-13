@@ -8,6 +8,7 @@ import { ReactKeycloakProvider } from "@react-keycloak/web";
 import keycloak from "./keycloak";
 import AccountPage from "./pages/account/AccountPage";
 import PrivateRoute from "./helpers/PrivateRoute";
+import AboutUsPage from "./pages/about-us/AboutUsPage";
 
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
                                     </PrivateRoute>
                                 } />
                         </Route>
+                        <Route path="/about-us" element={<AboutUsPage />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

@@ -19,23 +19,28 @@
 .navbar-nav {
     margin-left: 2%;
     display: flex;
-    justify-content: space-between;
+    
     align-items: center;
+    flex-wrap:wrap;
+    width: fit-content;
+    flex-direction: row;
 }
 .navbar-nav-right {
-    width: 100%;
-    margin-left: 2%;
+    margin-left: auto;
     display: flex;
     justify-content: end;
     align-items: center;
     flex-wrap: wrap;
 }
-.navbar-button {
-    margin: 5px 15px 0px 0px;
+.navbar-account {
+    margin: 0px 15px 0px 0px;
+    width: 40px;
+    cursor: pointer;
 }
 .navbar-nav-item {
     font-family: 'Roboto Slab', serif;
     margin: 0px 10px;
+    width: max-content;
 }
 .navbar-nav-link {
     text-decoration: none;

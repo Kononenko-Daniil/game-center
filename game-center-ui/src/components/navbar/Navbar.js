@@ -1,9 +1,11 @@
 import './Navbar.css';
 import '../../css/global.css';
 import logo from '../../shared/logo.png';
+import avatar from '../../shared/avatar.png';
 import Spacer from '../spacer/Spacer';
 import { useEffect, useRef, useState } from 'react';
 import { useKeycloak } from '@react-keycloak/web';
+
 
 const Navbar = () => {
     const { keycloak } = useKeycloak();
@@ -37,6 +39,13 @@ const Navbar = () => {
                                 Игры
                         </a> 
                     </div>
+                    <div className='navbar-nav-item'>
+                        <a 
+                            className='navbar-nav-link' 
+                            href="/about-us">
+                                О нас
+                        </a> 
+                    </div>
                 </div>
                 <div className='navbar-nav-right'>
                     {
@@ -55,11 +64,11 @@ const Navbar = () => {
                         </>
                         :
                         <>
-                            <button 
+                            <img 
+                                src={avatar}
                                 onClick={() => {window.location.href = '/users/me';}} 
-                                className="navbar-button">
-                                    Аккаунт
-                            </button>
+                                className="navbar-account">
+                            </img>
                         </>
                     }
                 </div>
