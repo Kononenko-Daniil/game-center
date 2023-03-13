@@ -50,3 +50,6 @@
     text-decoration: none;
     color: rgb(45, 45, 45);
 }
+.navbar-button {
+    margin: 5px 10px 0px 0px;
+}

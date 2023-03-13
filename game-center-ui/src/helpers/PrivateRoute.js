@@ -10,7 +10,7 @@ const PrivateRoute = ({ children }) => {
         isLoggedIn ? 
             children : 
             <Center>
-                <h1>Вы не вошли в аккаунт</h1>
+                <h1 style={{textAlign: 'center'}}>Вы не вошли в аккаунт</h1>
             </Center>
     );
 };

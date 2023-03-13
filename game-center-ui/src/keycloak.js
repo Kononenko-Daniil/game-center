@@ -1,8 +1,8 @@
 import Keycloak from "keycloak-js";
 const keycloak = new Keycloak({
-    url: "http://localhost:8080/",
-    realm: "Realm_1",
-    clientId: "lyceum_game_center",
+    url: "https://dankan-id.bsulyceum.org/",
+    realm: "lyceum_game_center",
+    clientId: "game_center",
 });
 
 export default keycloak;

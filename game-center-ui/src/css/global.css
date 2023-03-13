@@ -8,10 +8,20 @@ button {
     border-style: none;
     color: black;
     cursor: pointer;
+    transition: background-color 0.2s 0s linear;
+}
+
+button:hover {
+    background-color: #c5c5c5;
 }
 
 button.danger {
     background-color: #D9333F;
+    color: white;
+}
+
+button.danger:hover {
+    background-color: #b22d35;
     color: white;
 }
 
@@ -20,13 +30,28 @@ button.success {
     color: white;
 }
 
+button.success:hover {
+    background-color: #609631;
+    color: white;
+}
+
 button.attention {
     background-color: #F0E639;
     color: black;
 }
 
+button.attention:hover {
+    background-color: #d3ca2a;
+    color: black;
+}
+
 button.primary {
     background-color: #1EC2E2;
+    color: white;
+}
+
+button.primary:hover {
+    background-color: #26a2bb;
     color: white;
 }
 

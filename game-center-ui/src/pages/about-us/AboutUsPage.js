@@ -5,7 +5,6 @@ import lyceum_game_center_logo from '../../shared/logo_light.png';
 import developer from '../../shared/me.jpg';
 import github from '../../shared/github.png';
 import './AboutUsPage.css';
-import { useEffect, useState } from 'react';
 
 const AboutUsPage = () => {
     return (
@@ -45,7 +44,6 @@ const AboutUsPage = () => {
                     <img src={github} style={{width: "50px", marginBottom: "20px", cursor: 'pointer'}} />
                 </a>
             </VStack>
-            
         </Center>
     )
 }

@@ -16,8 +16,8 @@ const GameCard = (props) => {
                 </a>
             </h1>
             <a 
-                className='developer-link' 
-                href={`${game.developer}`}>
+                className='developer-link'
+                href={'/about-us'}>
                 {game.developer}
             </a>
         </div>

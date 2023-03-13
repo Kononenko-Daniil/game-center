@@ -61,7 +61,7 @@ const GameDetailPage = () => {
                                 fontFamily: 'Roboto Slab,serif', 
                                 fontSize: '15px'
                                 }}>
-                                Разработчик: <a className='developer-link' href={`${game.developer}`}>{game.developer}</a>
+                                Разработчик: <a className='developer-link' href={'/about-us'}>{game.developer}</a>
                             </span>
 
                             {game.component(publishResult, publishingError, setPublishingError)}
