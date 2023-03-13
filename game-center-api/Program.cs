@@ -78,6 +78,3 @@ app.UseCors(AllowOrigins);
 
 app.Run();
 
-/*
- curl --data "grant_type=password&client_id=lyceum_game_center&username=dankan&password=29084" localhost:8080/realms/Realm_1/protocol/openid-connect/token
- */
